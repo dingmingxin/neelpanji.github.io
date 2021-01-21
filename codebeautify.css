@@ -245,7 +245,7 @@ main>.content {
   width: 32px;
   height: 32px;
   stroke: #a3a3a3;
-  fill:white;
+  fill: white;
   transition: fill .1s;
   cursor: pointer;
 }
