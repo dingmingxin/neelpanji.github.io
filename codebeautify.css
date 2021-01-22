@@ -281,7 +281,7 @@ main>.content {
 }
 
 .letter.solved {
-  fill: #767676;
+  fill: #0000FF;
 }
 
 .letter.cursor {
