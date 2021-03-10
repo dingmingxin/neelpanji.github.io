@@ -286,7 +286,7 @@ function Exolve(puzzleSpec,
     'manage-storage.hover': 'View puzzle Ids for which state has been saved. Delete old saved states to free up local storage space if needed',
     'manage-storage-close': 'Close (local storage)',
     'manage-storage-close.hover': 'Close the local storage management panel',
-    'report-bug': 'Report bug',
+    
     'saving-msg': 'Your entries are auto-saved in the the browser\'s local storage.',
     'saving-bookmark': 'You can save/share the current state using this link:',
     'saving-url': 'URL',
@@ -438,9 +438,6 @@ Exolve.prototype.init = function() {
               <a id="${this.prefix}-tools-link" href=""
                   title="${this.textLabels['tools-link.hover']}"
                   >${this.textLabels['tools-link']}</a>
-              <a id="${this.prefix}-report-bug"
-                href="https://github.com/viresh-ratnakar/exolve/issues/new"
-                    >${this.textLabels['report-bug']}</a>
             
               <span id="${this.prefix}-copyright"></span>
             </div> <!-- xlv-small-print -->
