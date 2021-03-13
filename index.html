@@ -3045,8 +3045,8 @@ Exolve.prototype.computeGridSize = function(maxDim) {
   if (maxDim > 0 && maxDim < viewportDim) {
     viewportDim = maxDim
   }
-  this.squareDim = 100
-  if (this.gridWidth <= 99 &&  // For jumbo grids, give up.
+  this.squareDim = 31
+  if (this.gridWidth <= 30 &&  // For jumbo grids, give up.
       (this.squareDim + this.GRIDLINE) * this.gridWidth + this.GRIDLINE >
       viewportDim - 8) {
     this.squareDim = Math.max(20,
@@ -3068,7 +3068,7 @@ Exolve.prototype.computeGridSize = function(maxDim) {
                                Math.max(30, Math.floor((viewportDim - 8) / 8)))
   this.letterSize = Math.max(10, this.squareDimBy2)
   this.numberSize = 1 + Math.max(7, Math.floor(this.squareDim / 3) - 1)
-  this.arrowSize = Math.max(8, Math.floor(13 * this.squareDim / 100))
+  this.arrowSize = Math.max(8, Math.floor(13 * this.squareDim / 31))
 }
 
 Exolve.prototype.displayGridBackground = function() {
