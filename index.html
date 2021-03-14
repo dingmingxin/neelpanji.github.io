@@ -168,13 +168,13 @@ function Exolve(puzzleSpec,
   this.visTop = visTop
   this.maxDim = maxDim
 
-  this.MAX_GRID_SIZE = 10000
-  this.GRIDLINE = 2
-  this.BAR_WIDTH = 6
-  this.BAR_WIDTH_BY2 = 4
-  this.SEP_WIDTH = 4
-  this.SEP_WIDTH_BY2 = 3
-  this.NUMBER_START_X = 4
+  this.MAX_GRID_SIZE = 100
+  this.GRIDLINE = 1
+  this.BAR_WIDTH = 3
+  this.BAR_WIDTH_BY2 = 2
+  this.SEP_WIDTH = 2
+  this.SEP_WIDTH_BY2 = 1.5
+  this.NUMBER_START_X = 2
 
   this.answersList = []
   this.revelationList = []
@@ -3045,7 +3045,7 @@ Exolve.prototype.computeGridSize = function(maxDim) {
   if (maxDim > 0 && maxDim < viewportDim) {
     viewportDim = maxDim
   }
-  this.squareDim = 31
+  this.squareDim = 37
   if (this.gridWidth <= 30 &&  // For jumbo grids, give up.
       (this.squareDim + this.GRIDLINE) * this.gridWidth + this.GRIDLINE >
       viewportDim - 8) {
@@ -5631,7 +5631,7 @@ function createPuzzle() {
 }
 .xlv-anno-text {
   font-family: monospace;
-  font-size: 12px;
+  font-size: 16px;
 }
 .xlv-flex-row {
   display: flex;
@@ -5721,8 +5721,8 @@ function createPuzzle() {
   text-anchor: middle;
   border: 'dotted';
   width: 90%;
-  height: 100%;
-  padding: 0 0 0 0;
+  height: 60%;
+  padding: 12px 0 0 0;
   color: rgba(0,0,0,0.0);
   background: rgba(0,0,0,0.0);
   outline: 'black';
@@ -5800,7 +5800,7 @@ function createPuzzle() {
 }
 .xlv-solution {
   font-family: monospace;
-  font-size: 12px;
+  font-size: 20px;
   font-weight: bold;
 }
 .xlv-question {
