@@ -85,6 +85,7 @@ exolve-end
 ======REPLACE WITH YOUR PUZZLE ABOVE======
 `;
 
+
 /**
  * The Exolve code creates only the following names at global scope:
  *
@@ -249,6 +250,7 @@ function Exolve(puzzleSpec,
     'prefill': 'blue',
     'anno': 'darkgreen',
     'solved': 'dodgerblue',
+    'rutvik': 'green',
     'separator': 'blue',
     'imp-text': 'darkgreen',
     'button': '#4caf50',
@@ -2823,7 +2825,7 @@ Exolve.prototype.applyStyles = function() {
   }
   customStyles.innerHTML = `
     #${this.prefix}-frame {
-      font-size: 30px;
+      font-size: 20px;
       font-family: "Times New Roman", Times, serif;
       font-weight: 400;
       line-height: normal;
@@ -3066,7 +3068,7 @@ Exolve.prototype.computeGridSize = function(maxDim) {
   if (maxDim > 0 && maxDim < viewportDim) {
     viewportDim = maxDim
   }
-  this.squareDim = 31
+  this.squareDim = 35
   if (this.gridWidth <= 30 &&  // For jumbo grids, give up.
       (this.squareDim + this.GRIDLINE) * this.gridWidth + this.GRIDLINE >
       viewportDim - 8) {
@@ -3380,7 +3382,7 @@ Exolve.prototype.deactivateCurrCell = function() {
       cellRect.style.fill = this.colorScheme['cell']
     }
     if (!gridCell.prefill) {
-      gridCell.cellText.style.fill = this.colorScheme['light-text']
+      // gridCell.cellText.style.fill = this.colorScheme['light-text']
     }
     if (gridCell.cellNum) {
       gridCell.cellNum.style.fill = this.colorScheme['light-label']
@@ -5063,7 +5065,11 @@ Exolve.prototype.checkCurr = function() {
     let gridCell = this.grid[row][col]
     let oldLetter = gridCell.currLetter
     if (oldLetter == gridCell.solution) {
+
+      gridCell.cellText.style.fill = this.colorScheme['rutvik']
       allCorrectNum++
+      // #${this.prefix}-frame  {
+      // color: ${this.colorScheme['rutvik']};
       continue
     }
     allCorrectNum = 0
@@ -5127,6 +5133,8 @@ Exolve.prototype.checkAll = function(conf=true, erase=true) {
         continue
       }
       if (gridCell.currLetter == gridCell.solution) {
+
+        gridCell.cellText.style.fill = this.colorScheme['rutvik']
         continue
       }
       allCorrect = false
@@ -5256,6 +5264,7 @@ Exolve.prototype.revealCurr = function() {
         gridSymCell.textNode.nodeValue = symChar
       }
     }
+    gridCell.cellText.style.fill = this.colorScheme['rutvik']
   }
   this.updateActiveCluesState()
   if (this.currClueIndex && !this.cellNotLight) {
@@ -5281,13 +5290,17 @@ Exolve.prototype.revealAll = function(conf=true) {
         continue
       }
       if (gridCell.currLetter != gridCell.solution) {
+        // div.setAttribute('style', 'font-color: center');
+        // this.gridInputRarr.style.color
         gridCell.currLetter = gridCell.solution
-        let revealedChar = this.stateToDisplayChar(gridCell.solution)
+        var revealedChar = this.stateToDisplayChar(gridCell.solution)
         gridCell.textNode.nodeValue = revealedChar
         if (this.atCurr(row, col)) {
           this.gridInput.value = revealedChar
         }
       }
+
+      gridCell.cellText.style.fill = this.colorScheme['rutvik']
     }
   }
   for (let a of this.answersList) {
@@ -5821,7 +5834,7 @@ function createPuzzle() {
 }
 .xlv-solution {
   font-family: monospace;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
 }
 .xlv-question {
@@ -5908,6 +5921,8 @@ function createPuzzle() {
   }
 }
 </style>
+
+
  <p style="font-size:24px;"><b>HOW TO PLAY</b><br>1.) fill in the blocks and use <i>check this</i> button to check the individual answer and <i>check all</i> button for all answers.<br>2.) while using the <i>check this or check all</i> button those letters wrongly added in the blocks will be deleted and correct once will be left.<br>3.) Once all the letters filled irrespective of correct or wrong of a clue, the clue in the clue list would change to blue to indicate completion.<br>4.) You can also submit the puzzle in order to check your result and not use the reveal buttons for more excitement <br>5.) The answer to clue if correct after checking with the <i>check this or check all</i> button a hyperlink becomes visible next to the clue. Right clicking and opening the link in new tab will take you to the information page regarding the word.<br>   Similarily for the <i>reveal this and reveal all</i> button.</h2></p><h2><p style="color:blue;" "font-size:50px;">PS: Suggestive to use a laptop/monitor for a better experience</p></h2> 
 </head>
 <body>
